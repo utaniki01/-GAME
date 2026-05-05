@@ -2,7 +2,7 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 //描画処理では毎回記入
 canvas.width = 480;
-canvas.height = 553;//553でぎちぎち
+canvas.height = 550;//553でぎちぎち
 //canvas.height = 320;
 var ballRadius = 10;//円の半径
 var x = canvas.width / 2;//ボールの位置
