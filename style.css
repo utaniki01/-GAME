@@ -19,3 +19,15 @@ body{
   text-shadow: 0 0 20px black;
   display: none; /*最初は隠す*/
   }
+
+  #YOUWIN{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) ;
+    font-size: 72px;
+    font-weight: bold;
+    color: yellow;
+    text-shadow:0 0 20px gold;
+    display: none;
+  }
