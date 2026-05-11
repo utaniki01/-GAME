@@ -1,4 +1,10 @@
-//canvas.height = 320;
+
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+//描画処理では毎回記入
+canvas.width = 480;
+//canvas.height = 550;//553でぎちぎち
+canvas.height = 320;
 var ballRadius = 10;//円の半径
 var x = canvas.width / 2;//ボールのx座標
 var y = canvas.height - 30;//ボールのy座標
@@ -25,9 +31,10 @@ const brickOffsetLeft = 30;//ブロック全体左から30px動かして書く
 const bricks = [];//3行5列のブロックを作るための
 
 var SCORE = 0;//スコアを管理する変数
+var Lives=3;
 var SCOREelement=document.getElementById("SCORE");//SCOREドキュメントのidを取得
-
-var WIN = document.getElementById("YOUWIN")//YOUWINのIDを取得
+var LivesEelement=document.getElementById("Lives");//上と変わらん
+var WIN = document.getElementById("GAMECLEAR")//GAMECLEARのIDを取得
 
 let mouseLeftPressed = false;//左マウスのキーが押されたの真理値を保持するデフォでfalse
 
@@ -198,11 +205,21 @@ function draw() {
     if (x > paddleX && x < paddleX + paddleWidth) {
       dy = -dy;
     } else {
+      Lives--;
+      LivesEelement.textContent=Lives;
+      if(!Lives){
       over.style.display = "block"//隠したGAME OVERを表示
       clearInterval(interval); // Needed for Chrome to end game
       setTimeout(() => {
         document.location.reload();
-      }, 2000);//2秒後再読み込み        
+      }, 2000);//2秒後再読み込み 
+    }  else  {
+      x = canvas.width/2;
+        y = canvas.height-30;
+        dx = 3;
+        dy = -3;
+        paddleX = (canvas.width-paddleWidth)/2;
+    }
     }
   }
   if (rightPressed && paddleX < canvas.width - paddleWidth) {
@@ -216,6 +233,11 @@ function draw() {
 }
 
 var interval = setInterval(draw, 10);//10ミリ秒ごとにdraw実行の処理の場所を格納
+
+
+
+
+
 
 
 
